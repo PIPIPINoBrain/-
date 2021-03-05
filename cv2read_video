@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import cv2
+
+#cv2读取图片
+img1 = cv2.imread(r'C:\Users\Administrator\Desktop\fish.jpg',cv2.IMREAD_COLOR)
+img2 = cv2.imwrite(r'C:\Users\Administrator\Desktop\fish1.jpg',img1)
+print(img1.dtype)
+print(img1.size)
+
+def cv2_show(name,data):
+    cv2.imshow(name,data)
+    cv2.waitKey()
+    cv2.destroyAllWindows()
+    
+cv2_show('img1',img1)
+
+#cv2读取视频
+video = cv2.VideoCapture(r'C:\Users\Administrator\Desktop\cat.mp4')
+def video_frame(name,data):
+    if data.isOpened():
+        openret,frame = data.read()
+    else:
+        openret = False
+    while(openret):
+        openret,frame = data.read()
+        if frame is None:
+            break
+        if openret==True:
+            cv2.imshow(name,frame)
+            if cv2.waitKey(100) & 0xFF==27:
+                break
+    video.release()
+    cv2.destroyAllWindows()
+video_frame('cat',video)
