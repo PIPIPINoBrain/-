@@ -1,0 +1,58 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include"game.h"
+void game()
+{
+	char board[ROW][COL] = { 0 };
+	init_board(board,ROW,COL);
+	dispaly_board(board,ROW,COL);
+	while (1)
+	{
+		char result = '0';
+		player_step(board,ROW,COL);
+		result = iswin(board,ROW,COL);
+		printf("%c", result);
+		if (result == '*')
+		{
+			printf("人类赢");
+			break;
+		}
+		else if (result == '#')
+		{
+			printf("电脑赢");
+			break;
+		}
+		else if (result == 'p')
+		{
+			printf("平局");
+			break;
+		}
+		else
+		{
+			printf("下一步\n");
+		}
+		computer_step(board, ROW, COL);
+		result = iswin(board,ROW,COL);
+		if (result == '*')
+		{
+			printf("人类赢");
+			break;
+		}
+		else if (result == '#')
+		{
+			printf("电脑赢");
+			break;
+		}
+		else if (result == 'p')
+		{
+			printf("平局");
+			break;
+		}
+		else
+		{
+			printf("下一步\n");
+		}
+	}
+}
