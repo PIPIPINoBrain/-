@@ -1,0 +1,56 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include"game.h"
+void init_board(char board[ROW][COL], int row, int col)
+{
+	int i = 0, j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < col; j++)
+		{
+			board[i][j] = ' ';
+		}
+	}
+}
+
+void dispaly_board(char board[ROW][COL], int row, int col)
+{
+	int i = 0, j = 0;
+	for (i = 0; i < row; i++)
+	{
+		if (i < row - 1)
+		{
+			for (j = 0; j < col; j++)
+			{
+				if (j < col - 1)
+					printf(" %c |", board[i][j]);
+				else
+					printf(" %c \n", board[i][j]);
+			}
+			for (j = 0; j < col; j++)
+			{
+				if (j < col - 1)
+					printf("---|");
+				else
+					printf("---\n");
+			}
+		}
+		else
+		{
+			for (j = 0; j < col; j++)
+			{
+				if (j < col - 1)
+				{
+					printf(" %c |", board[i][j]);
+				}
+				else
+				{
+					printf(" %c \n", board[i][j]);
+				}
+			}
+		}
+		
+	}
+}
