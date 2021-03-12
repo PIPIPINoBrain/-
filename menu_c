@@ -1,0 +1,36 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include"game.h"
+void menu()
+{
+	int flag = 1;
+	char start = '0';
+	do
+	{
+	again:
+		flag = 1;
+		printf("#############################\n");
+		printf("#############################\n");
+		printf("##  按s开始游戏，按e退出   ##\n");
+		scanf("%c", &start);
+		getchar();
+		if (start == 's')
+		{
+			printf("game start:\n");
+			game();
+			break;
+		}
+		else if (start == 'e')
+		{
+			printf("game exit:\n");
+			flag = 0;
+		}
+		else
+		{
+			printf("输入错误，重启游戏\n");
+			goto again;
+		}
+	} while (flag);
+}
