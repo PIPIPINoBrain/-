@@ -1,0 +1,46 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<time.h>
+#include"game.h"
+
+void player_step(char board[ROW][COL],int row,int col)
+{
+	int x = 0, y = 0;
+	while (1)
+	{
+		printf("玩家输入坐标：-》");
+		scanf("%d,%d", &x, &y);
+		if (1 <= x <= 3 && 1 <= y <= 3&&board[x-1][y-1]==' ')
+		{
+			board[x-1][y-1] = '*';
+			dispaly_board(board, ROW, COL);
+			break;
+		}
+		else
+		{
+			printf("输入超出范围,");
+		}
+
+	}
+	
+}
+void computer_step(char board[ROW][COL], int row, int col)
+{
+	int x = 0, y = 0;
+	while (1)   
+	{
+		x = rand() % row;
+		y = rand() % col;
+		if (board[x][y] == ' ')
+		{
+			printf("电脑输出：\n");
+			board[x][y] = '#';
+			dispaly_board(board, ROW, COL);
+			break;
+		}
+		
+	}
+
+}
